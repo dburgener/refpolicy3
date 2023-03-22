@@ -7,7 +7,8 @@
 // TODO add back in once roles are supported
 // role staff_r {};
 
-domain staff_t inherits user_t {
+//domain staff_t inherits user_t {
+domain staff_t {
     /// Unprivileged user domain for administrators.
 
     // TODO: role changing permissions

@@ -88,7 +88,8 @@ domain unconfined_t inherits userdomain {
     }
 }
 
-domain unconfined_execmem_t inherits unconfined_t {
+//domain unconfined_execmem_t inherits unconfined_t {
+domain unconfined_execmem_t {
     /// The unconfined user domain with exectuable memory and stack.
 
     //
@@ -136,10 +137,9 @@ domain unconfined_mount_t inherits common_domain {
     //
     // Functions
     //
-    fn domtrans(domain source, role src_role=source.roles) {
+    fn domtrans(domain source) {
         mount_t.exec.mmap_exec(source);
         allow(source, this, process, [transition]);
         type_transition(source, mount_t.exec, process, this);
-        role_associate(src_role, this.roles);
     }
 }

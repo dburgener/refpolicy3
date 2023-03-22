@@ -161,7 +161,8 @@ resource policy_src_t inherits common_file {
     /// SELinux policy source files.
 }
 
-domain restorecond_t inherits daemon, setfiles_t {
+//domain restorecond_t inherits daemon, setfiles_t {
+domain restorecond_t inherits daemon {
     /// Daemon for initializing contexts on new files.
 
     //
@@ -315,7 +316,7 @@ domain semanage_t inherits user_app_domain {
     }
 
     @alias(semanage_tmp_t)
-    resource tmp inherits tmpfile {
+    extend tmp {
         /// Temporary files in /tmp and /var/tmp.
     }
 
@@ -509,6 +510,14 @@ module selinuxutil_base {
     resource selinux_policy_t;
 }
 
+module semanage {
+    domain semanage_t;
+}
+
+module setfiles {
+    domain setfiles_t;
+}
+
 module selinuxutil {
     module checkpolicy;
     module selinuxutil_base;
@@ -520,10 +529,4 @@ module selinuxutil {
     module setfiles;
 }
 
-module semanage {
-    domain semanage;
-}
 
-module setfiles {
-    domain setfiles_t;
-}

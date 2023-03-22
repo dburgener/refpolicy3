@@ -610,7 +610,7 @@ resource selinuxfs_t inherits pseudo_filesystem, mountpoint {
     genfscon("selinuxfs", "/", any);
 }
 
-resource sysfs_t inherits xattr_filesystem, pseudo_filesystem, sysfs_entry {
+resource sysfs_t inherits xattr_filesystem, pseudo_filesystem {
     /// sysfs filesystem.
 
     file_context("/sys(/.*)?", any);
@@ -618,7 +618,7 @@ resource sysfs_t inherits xattr_filesystem, pseudo_filesystem, sysfs_entry {
     genfscon("sysfs", "/", any);
 
     @alias(cpu_online_t)
-    resource cpu_online inherits sysfs_entry {
+    resource cpu_online {
         /// /sys/devices/system/cpu/online.
         file_context("/sys/devices/system/cpu/online", file);
 
@@ -657,7 +657,7 @@ resource vxfs_t inherits noxattr_filesystem {
 @hint(class=[file fifo_file sock_file], hint="Tmpfs directories are shared. A different type should use used, e.g. foo_t.tmpfs, to keep data private.")
 @hint(class=dir, perm=create, hint="Tmpfs directories are shared. A different type should use used, e.g. foo_t.tmpfs, to keep data private.")
 @derive(strategy=common_dir)
-resource tmpfs_t inherits xattr_filesystem, common_dir, polyinstantiate_parent {
+resource tmpfs_t inherits xattr_filesystem, common_dir {
     /// tmpfs filesystem.
 
     device_t.associate(this);

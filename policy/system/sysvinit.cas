@@ -214,11 +214,16 @@ extend daemon {
     }
 }
 
+// Below syntax is returning a confusing error that indicates that pty is declared twice and points at the real pty both times.  Both aspects of that seem wrong
+// Unexpectedly, the rewrite to an association didn't fix it.  Or maybe that's expected because the nested syntax rewrites to @associate under the hood.  But doesn't the nested syntax potentially create a synthetic parent if one doesn't exist, while the associate doesn't?
+// Lets drop it entirely and come back to it
+//@associate([pty])
 extend init_script_t {
-    @alias(initrc_devpts_t)
-    resource pty inherits pty {
+    //@alias(initrc_devpts_t)
+    //extend pty {}
+    //resource pty inherits pty {
         /// The pty for init scripts.
-    }
+    //}
 }
 
 extend system_app_domain {
