@@ -4,9 +4,9 @@
 let sysadm_debug = false;
 /// Allow sysadm to debug or ptrace all processes.
 
-@associate([
-    session_dbus
-])
+//@associate([
+//    session_dbus
+//])
 domain sysadm_t inherits admin_userdomain, common_user {
     /// The general system administration user.
 

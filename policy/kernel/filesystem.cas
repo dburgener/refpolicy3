@@ -540,7 +540,7 @@ resource sysctl_t inherits common_dir_api {
     }
 
     @alias(sysctl_kernel_t)
-    resource kernel inherits sysctl_entry {
+    resource kernel_sysctl inherits sysctl_entry {
         /// kernel.* sysctls.
         genfscon("proc", "/sys/kernel", any);
 

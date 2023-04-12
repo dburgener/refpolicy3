@@ -277,7 +277,7 @@ collection network {
         net_conf_t.read(source); etc_t.list(source); runtime_t.list(source); var_t.list(source);
 
         // for /etc/resolv.conf symlink
-        NetworkManager_t.runtime<common_file>.read(source); runtime_t.list(source); var_t.list(source);
+        //NetworkManager_t.runtime<common_file>.read(source); runtime_t.list(source); var_t.list(source);
 
         systemd_resolved_t.runtime<common_file>.read(source);
     }

@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-2.0
 
-@associate([
-    session_dbus
-    systemd_user
-])
+//@associate([
+//    session_dbus
+//    systemd_user
+//])
 domain user_t inherits common_user, unpriv_userdomain {
 
     // port access is audited even if dac would not have allowed it, so dontaudit it here
